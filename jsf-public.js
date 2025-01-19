@@ -2444,13 +2444,17 @@
                         {
                             key: "addFilterChangeEvent",
                            		
-						    value: function () {
+			 value: function () {
                                 var t = this;
-                                 jQuery('.jet-checkboxes-list-wrapper').on("click",  ".jet-checkboxes-list__button"  , function (e) {
+                                 jQuery('.jet-checkboxes-list-wrapper').on("click",  ".jet-checkboxes-list__input" , function (e) {
                                     "AND" === t.relationalOperator && t.hasGroups && t.uncheckGroup(e.target), t.processData(), t.wasChanged();
-                                });
-                            }		
-                        },
+                                }),
+                                    this.canDeselect &&
+                                         jQuery('.jet-checkboxes-list-wrapper').on("click",  ".jet-checkboxes-list__input", function (e) {
+                                            var r = mt(e.target);
+                                            r.val() === t.dataValue && r.prop("checked", !1).trigger("change");
+                                        });
+                            },
                         {
                             key: "removeChangeEvent",
                             value: function () {
