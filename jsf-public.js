@@ -2443,17 +2443,13 @@
                     (i = [
                         {
                             key: "addFilterChangeEvent",
-                            value: function () {
+                           		
+						    value: function () {
                                 var t = this;
-                                this.$checkboxes.on("change", function (e) {
+                                 jQuery('.jet-checkboxes-list-wrapper').on("click",  ".jet-checkboxes-list__button"  , function (e) {
                                     "AND" === t.relationalOperator && t.hasGroups && t.uncheckGroup(e.target), t.processData(), t.wasChanged();
-                                }),
-                                    this.canDeselect &&
-                                        this.$checkboxes.on("click", function (e) {
-                                            var r = mt(e.target);
-                                            r.val() === t.dataValue && r.prop("checked", !1).trigger("change");
-                                        });
-                            },
+                                });
+                            }		
                         },
                         {
                             key: "removeChangeEvent",
